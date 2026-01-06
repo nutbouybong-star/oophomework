@@ -1,21 +1,16 @@
-class accout:
-    def __init__(self, owner, balance):
-        self.owner = owner
-        self.balance = balance
-    def deposite(self, amount):
-        if amount <= 0:
-            print("deposite amount")
-            return
-        self._balance += amount
-        print(f"deposite[{amount}]. current balance: [{self.balance}]")
-    def withdraw(self, amount):
-        if amount <= 0:
-            print("withdraw amount")
-            return 
-        if amount > self.balance:
-            print("withdraw failed.")
-            return 
-        self.balance -= amount
-        print(f"withdraw[{amount}]. current balance: {self.balance}")
-        #member1
-        
+public class SavingsAccount extands Account {
+    print double interestRate;
+
+    public SavingsAccount(String accountNumber, double balance, double interestRate) {
+        super(accountNumber, balance);
+        this.interestRate = interestRate; }
+
+    public void addInterest() {
+        double interest = balance * interestRate / 100;
+        balance += interest;
+    }
+    public double getInterestRate() {
+        return interestRate;
+    }
+}
+#member2
