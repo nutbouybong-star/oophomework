@@ -1,16 +1,24 @@
-public class SavingsAccount extands Account {
-    print double interestRate;
+from security import Security
 
-    public SavingsAccount(String accountNumber, double balance, double interestRate) {
-        super(accountNumber, balance);
-        this.interestRate = interestRate; }
 
-    public void addInterest() {
-        double interest = balance * interestRate / 100;
-        balance += interest;
-    }
-    public double getInterestRate() {
-        return interestRate;
-    }
-}
-#member2
+class Account:
+    def __init__(self, name, balance=0):
+        self.name = name
+        self.balance = balance
+        self.security = Security()
+
+    def deposit(self, amount):
+        self.security.validate_amount(amount)
+        self.balance += amount
+        self.security.log_info(
+            f"{self.name} deposit {amount}, balance = {self.balance}"
+        )
+
+    def withdraw(self, amount):
+        self.security.validate_amount(amount)
+        self.security.validate_balance(self.balance, amount)
+        self.balance -= amount
+        self.security.log_info(
+            f"{self.name} withdraw {amount}, balance = {self.balance}"
+        )
+        #member3
